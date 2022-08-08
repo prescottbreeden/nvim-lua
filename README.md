@@ -7,7 +7,7 @@ This repo requires Neovim 0.8, most packages are pinned so it should remain stab
 Move your current nvim folder to the side by renaming it `old_nvim_env` or whatever suits your fancy.
 Clone this:
 ```
-git clone https://github.com/prescottbreeden/lua_nvim.git ~/.config/nvim
+git clone https://github.com/prescottbreeden/nvim-lua.git ~/.config/nvim
 ```
 Run `nvim` and wait for the plugins to be installed 
 You will notice treesitter pulling in a bunch of parsers the next time you open Neovim
