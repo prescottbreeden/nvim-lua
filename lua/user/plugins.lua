@@ -41,36 +41,44 @@ packer.init({
 -- Install plugins on packer startup
 return packer.startup(function(use)
   -- [ Base plugins ]---------------------------------------------------------------------
-	use({ "lewis6991/impatient.nvim", commit = "969f2c5c90457612c09cf2a13fee1adaa986d350" })
+	use({ "lewis6991/impatient.nvim", commit = "969f2c5c90457612c09cf2a13fee1adaa986d350" }) -- Speeds up loading
 	use({ "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }) -- Useful lua functions used by lots of plugins
 	use({ "wbthomason/packer.nvim", commit = "00ec5adef58c5ff9a07f11f45903b9dbbaa1b422" }) -- Have packer manage itself
 	use({ "windwp/nvim-autopairs", commit = "fa6876f832ea1b71801c4e481d8feca9a36215ec" }) -- Autopairs, integrates with both cmp and treesitter
-	use({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "88343753dbe81c227a1c1fd2c8d764afb8d36269" })
-	use({ "akinsho/bufferline.nvim", commit = "c78b3ecf9539a719828bca82fc7ddb9b3ba0c353" })
-	use({ "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" })
-	use({ "nvim-lualine/lualine.nvim", commit = "3362b28f917acc37538b1047f187ff1b5645ecdd" })
-	use({ "nvim-treesitter/nvim-treesitter", commit = "518e27589c0463af15463c9d675c65e464efc2fe" })
+	use({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "88343753dbe81c227a1c1fd2c8d764afb8d36269" }) -- context dependent comment
+	use({ "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" }) -- Buffer deletion
+	use({ "nvim-treesitter/nvim-treesitter", commit = "518e27589c0463af15463c9d675c65e464efc2fe" }) -- lsp syntax
+  use('ThePrimeagen/harpoon')
 
   -- tpope essentials
-  use('tpope/vim-surround')
-  use('tpope/vim-commentary')
-  use('tpope/vim-repeat')
+  use('tpope/vim-surround') -- wrap motions with braces
+  use('tpope/vim-commentary') -- create comments
+  use('tpope/vim-repeat') -- "." support for plugins
+  use('tpope/vim-fugitive') -- git initegration 
 
 	-- Git
 	use({ "lewis6991/gitsigns.nvim", commit = "c18e016864c92ecf9775abea1baaa161c28082c3" })
-  -- use('airblade/vim-gitgutter')  -- old preference
+
+--  Clojure
+  use({'Olical/conjure', tag = 'v4.19.0'}) -- lsp
+  -- Only in Neovim:
+  use('radenling/vim-dispatch-neovim') -- ?
 
   -- [ Terminal plugins ]-----------------------------------------------------------------
-	use({ "akinsho/toggleterm.nvim", commit = "aaeed9e02167c5e8f00f25156895a6fd95403af8" })
+	use({ "akinsho/toggleterm.nvim", commit = "aaeed9e02167c5e8f00f25156895a6fd95403af8" }) -- fancy floating terminal windows
 
   -- [ Fancy UI plugins ]-----------------------------------------------------------------
   -- Modals
-	use({ "goolord/alpha-nvim", commit = "ef27a59e5b4d7b1c2fe1950da3fe5b1c5f3b4c94" })
-	use("folke/which-key.nvim")
-	use({ "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" })
+	use({ "goolord/alpha-nvim", commit = "ef27a59e5b4d7b1c2fe1950da3fe5b1c5f3b4c94" }) -- start screen options
+	use("folke/which-key.nvim") -- configurable modal to help show available keybindings
+	use({ "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" }) -- file/text search
 
   -- Appearance
-	use({ "lukas-reineke/indent-blankline.nvim", commit = "6177a59552e35dfb69e1493fd68194e673dc3ee2" })
+	use({ "akinsho/bufferline.nvim", commit = "c78b3ecf9539a719828bca82fc7ddb9b3ba0c353" }) -- creates tabs for buffers
+	use({ "lukas-reineke/indent-blankline.nvim", commit = "6177a59552e35dfb69e1493fd68194e673dc3ee2" }) -- adds veritcal bar for indents
+	use({ "nvim-lualine/lualine.nvim", commit = "3362b28f917acc37538b1047f187ff1b5645ecdd" }) -- status bar footer
+
+  -- Themes
 	use({ "folke/tokyonight.nvim", commit = "8223c970677e4d88c9b6b6d81bda23daf11062bb" })
 	use("lunarvim/darkplus.nvim")
   use('nanotech/jellybeans.vim')
